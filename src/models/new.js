@@ -3,8 +3,8 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 const moment = require ('moment');
-const New = mongoose.model("New", {
-
+//const New = mongoose.model("New", {
+  const newSchema = mongoose.Schema({
   title: {
     type: String,
     required: true,    
@@ -29,9 +29,19 @@ const New = mongoose.model("New", {
       return moment().add(2,'hour')
     }
 
-}
+ },
+  avatar:{
+    type:Buffer
+  },
+  owner:{
+    type:mongoose.Schema.Types.ObjectId,
+    required:true,
+    ref:'Reporter'
+ }
+
 
 });
 
+  const New = mongoose.model("New", newSchema);
 
-module.exports = New
+  module.exports = New
