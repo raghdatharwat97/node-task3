@@ -68,7 +68,7 @@ const reporterSchema = mongoose.Schema({
      next()
   })
   /////////////////////////////////////////////////////////////////
-  eporterSchema.statics.findByCredentials = async (email,password)=>{
+  reporterSchema.statics.findByCredentials = async (email,password)=>{
     const user = await Reporter.findOne({email:email})
     if(!user){
         throw new Error ('User is not Found')
